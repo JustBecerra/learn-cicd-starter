@@ -18,3 +18,5 @@ jobs:
         run: scripts/buildprod.sh
       - name: Deploy
         run: ./notely
+        env:
+          PORT: "8080"
