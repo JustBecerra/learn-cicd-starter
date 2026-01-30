@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"embed"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -35,7 +36,7 @@ func main() {
 	if port == "" {
 		log.Fatal("PORT environment variable is not set")
 	}
-
+	fmt.Println("checking if CD works")
 	apiCfg := apiConfig{}
 
 	// https://github.com/libsql/libsql-client-go/#open-a-connection-to-sqld
