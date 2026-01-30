@@ -16,7 +16,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Build
         run: scripts/buildprod.sh
-      - name: Deploy
-        run: ./notely
+      - name: Smoke test
+        run: |
+          ./notely &
+          sleep 2
+          curl -sf http://localhost:8080/v1/healthz || exit 1
+          pkill notely || true
         env:
           PORT: "8080"
